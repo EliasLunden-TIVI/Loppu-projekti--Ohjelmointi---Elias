@@ -81,7 +81,7 @@ else: #// Backup-Failsafe (Palauttaa aina nolla / ei)
 
 #// Salasanan pituus
 
-print("DEBUG! Valitut kirjaimet" , chosenletters)
+#print("DEBUG! Valitut kirjaimet" , chosenletters)
 jatkaminen = True #//valmistaa Boolean lauseen.
 
 #//Jatkamis looppi
