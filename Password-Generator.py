@@ -89,15 +89,15 @@ while jatkaminen == True:
 
     contgen = input("Haluatko luoda uuden salasanan samoilla kriteereillä?: 0 = Ei 1 = Kyllä: ") #//ContGEN = Continiue Generation
 
-    if contgen == str(0):
+    if contgen == str(0): #// Ei: Lopettaa toiston ja ohjelman
         jatkaminen == False
         break
-    elif contgen == str(1):
+    elif contgen == str(1): #//Kyllä: jatkaa toistoa riviltä 77
         jatkaminen == True
         print("Toistetaan luominen...")
     else: 
-        print("Syötettä ei tunnistettu. Palautetaan arvo 0 / Ei")
+        print("Syötettä ei tunnistettu. Palautetaan arvo 0 / Ei") #// Failsafe-Arvo: Palauttaa nolla / ei jos syöte ei ole 0 tai 1
         jatkaminen == False
         break
 
-print("Kiitos ohjelman käytöstä ja tervetuloa uudelleen!")
+print("Kiitos ohjelman käytöstä ja tervetuloa uudelleen!") #// Bye bye viesti :)
