@@ -37,7 +37,7 @@ else: #// Backup-Failsafe (Palauttaa aina nolla / ei)
     print("Ei hyväksytty syöte. Palautetaan valinta: EI.")
 
 #// Numero kirjaimet
-numbers = input("Add numbers 0-9 to generation? 0 = No 1 = Yes: ")
+numbers = input("Haluatko numeroita 0 - 9 salasanaan? 0 = Ei 1 = Kyllä: ")
 
 if numbers == str(0): #// Ei
     print("Ei numeroita")
@@ -48,7 +48,7 @@ else: #// Backup-Failsafe (Palauttaa aina nolla / ei)
     print("Ei hyväksytty syöte. Palautetaan valinta: EI.")
 
 #//Erikois merkit
-specials = input("Add special charecters? #, !, %: 0 = No 1 = Yes: ")
+specials = input("Haluatko erikoismerkkejä salaasnaan? #, !, %: 0 = Ei 1 = Kyllä: ")
 
 if specials == str(0): #// Ei
     print("Ei erikoismerkkejä")
@@ -58,7 +58,7 @@ elif numbers == str(1): #// Kyllä
 else: #// Backup-Failsafe (Palauttaa aina nolla / ei)
     print("Ei hyväksytty syöte. Palautetaan valinta: EI.")
 
-nordics = input("Haluatko Pohjoismaan kirjaimet (ÄÄKÖSET)? Ä, Ö, Å: 0 = No 1 = Yes: ")
+nordics = input("Haluatko Pohjoismaan kirjaimet (ÄÄKÖSET)? Ä, Ö, Å: 0 = Ei 1 = Kyllä: ")
 
 if nordics == str(0): #// Ei
     print("Ei ÄÄKKÖ:siä.")
@@ -71,10 +71,33 @@ else: #// Backup-Failsafe (Palauttaa aina nolla / ei)
 #// Salasanan pituus
 
 print("DEBUG! Valitut kirjaimet" , chosenletters)
+jatkaminen = True #//valmistaa Boolean lauseen.
 
-passwordLength = int(input("Input desired lenght : "))
+#//Jatkamis looppi
+while jatkaminen == True:
 
-password = "".join(random.choice(chosenletters) for _ in range(passwordLength)) #// Syöttää muuttujaan password satunnaisen kirjainsarjan, ja leikkaa sen sopivan pituiseksi Password-lenght parametrilla."
+    passwordLength = int(input("Syötä toivottu pituus salasanalle: "))
+    if passwordLength <= 0:
+        print("Arvo pienempi kuin nolla tunnistettu syötteessä. Asetetaan sopivaan arvoon: 10")
+        passwordLength = 10
 
-print("Salasanasi on:" , password) #//Tulostaa salasanan käyttäjälle.
+    password = "".join(random.choice(chosenletters) for _ in range(passwordLength)) #// Syöttää muuttujaan password satunnaisen kirjainsarjan, ja leikkaa sen sopivan pituiseksi Password-lenght parametrilla."
 
+    print("Salasanasi on:" , password) #//Tulostaa salasanan käyttäjälle.
+
+    #// Jatkamis pyyntö
+
+    contgen = input("Haluatko luoda uuden salasanan samoilla kriteereillä?: 0 = Ei 1 = Kyllä: ") #//ContGEN = Continiue Generation
+
+    if contgen == str(0):
+        jatkaminen == False
+        break
+    elif contgen == str(1):
+        jatkaminen == True
+        print("Toistetaan luominen...")
+    else: 
+        print("Syötettä ei tunnistettu. Palautetaan arvo 0 / Ei")
+        jatkaminen == False
+        break
+
+print("Kiitos ohjelman käytöstä ja tervetuloa uudelleen!")
